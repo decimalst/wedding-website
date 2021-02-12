@@ -137,45 +137,12 @@ $(document).ready(function () {
     });
 
 
-    /********************** Add to Calendar **********************/
-    var myCalendar = createCalendar({
-        options: {
-            class: '',
-            // You can pass an ID. If you don't, one will be generated for you
-            id: ''
-        },
-        data: {
-            // Event title
-            title: "Byron and Kelly's Wedding",
-
-            // Event start date
-            start: new Date('Mar 22, 2022 06:00'),
-
-            // Event duration (IN MINUTES)
-            // duration: 120,
-
-            // You can also choose to set an end time
-            // If an end time is set, this will take precedence over duration
-            start: new Date('Mar 22, 2022 11:00'),
-
-            // Event Address
-            address: 'US Virgin Islands, St. Thomas',
-
-            // Event Description
-            description: "We can't wait to see you on our big day. For any queries or issues, please contact Mr. Amit Roy at +91 9876543210."
-        }
-    });
-
-    $('#add-to-cal').html(myCalendar);
-
-
     /********************** RSVP **********************/
     $('#rsvp-form').on('submit', function (e) {
         e.preventDefault();
         var data = $(this).serialize();
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
-        console.log(MD5($('#invite_code').val()))
         if (MD5($('#invite_code').val()) !== '4102cc6697c53898ce404ff4bedcbe4e'
             && MD5($('#invite_code').val()) !== '4102cc6697c53898ce404ff4bedcbe4e') {
             console.log(MD5($('#invite_code').val()))
@@ -202,34 +169,6 @@ $(document).ready(function () {
 
 /********************** Extras **********************/
 
-// Google map
-function initMap() {
-    var location = {lat: 22.5932759, lng: 88.27027720000001};
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: location,
-        scrollwheel: false
-    });
-
-    var marker = new google.maps.Marker({
-        position: location,
-        map: map
-    });
-}
-
-function initBBSRMap() {
-    var la_fiesta = {lat: 20.305826, lng: 85.85480189999998};
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: la_fiesta,
-        scrollwheel: false
-    });
-
-    var marker = new google.maps.Marker({
-        position: la_fiesta,
-        map: map
-    });
-}
 
 // alert_markup
 function alert_markup(alert_type, msg) {
